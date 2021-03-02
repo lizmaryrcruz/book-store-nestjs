@@ -3,10 +3,11 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserRepository } from './user.repository';
 import { UserService } from './user.service';
 import {User} from './user.entity'
-import { SharedModule } from '../../shared/shared.module';
 import { UserController } from './user.controller';
+import { AuthModule } from '../auth/auth.module';
+import { RoleRepository } from '../role/role.repository';
 @Module({
-imports: [TypeOrmModule.forFeature([UserRepository]), SharedModule],
+imports: [TypeOrmModule.forFeature([UserRepository,RoleRepository]),AuthModule],
 exports: [TypeOrmModule], 
 providers: [UserService], 
 controllers: [UserController],

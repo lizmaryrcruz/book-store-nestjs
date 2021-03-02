@@ -33,11 +33,10 @@ export class RoleService {
 
     }
     async create(role: Role): Promise<Role>{    
-
-      
       const savedRole: Role = await this._roleRepository.save(role);
       return savedRole; 
     }
+    
     async update(id: number, role: Role): Promise<void>{
       await this._roleRepository.update(id, role);
      

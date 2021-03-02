@@ -1,6 +1,4 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { Configuration } from './config/config.keys';
 import { ConfigService } from './config/config.service';
 import { DatabaseModule } from './database/database.module';
@@ -10,6 +8,7 @@ import { ConfigModule } from './config/config.module';
 import { RoleModule } from './modules/role/role.module';
 import{TypeOrmModule} from '@nestjs/typeorm';
 import { Connection } from 'typeorm';
+import { AuthModule } from './modules/auth/auth.module';
 @Module({ 
   imports: [
      DatabaseModule, 
@@ -17,14 +16,10 @@ import { Connection } from 'typeorm';
      CursoModule, 
      ConfigModule, 
      RoleModule,
-     TypeOrmModule.forRoot(
-       {
-          autoLoadEntities: true,      
-      }
-     )
+     AuthModule
     ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {
   static port: number | string;

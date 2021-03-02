@@ -19,7 +19,6 @@ export class RoleController {
   } 
   @Post()
   async createRole(@Body() role: Role): Promise<Role>{
-   
     const createdRole = await this._roleService.create(role); 
    return createdRole;
 }
